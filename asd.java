@@ -1,5 +1,5 @@
 
-public class adc {
+public class asd {
 
 	/**
 	 * @param args
