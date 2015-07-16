@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 
 public class MainActivity extends Activity {
     EditText editText;
@@ -31,12 +33,41 @@ public class MainActivity extends Activity {
                 if(shengao.length()>0&&tizhong.length()>0){
                     double sg= Double.valueOf(shengao);
                     double tz= Double.valueOf(tizhong);
-                    text_result.setText("BMI="+tz/(sg*sg)+"");
+                    double m=sg * sg;
+                    double bmi=tz/(m/10000);
+                    float f=(float)bmi;
+
+
+
+
+
+                    if(bmi<18.5 ){
+
+                        text_result.setText("BMI为"+String.valueOf(f)+"体型"+"偏瘦");
+                    }
+                    if (bmi>=18.5&&bmi<=23.9){
+
+                        text_result.setText("BMI为"+String.valueOf(f)+"体型"+"正常");
+                    }
+                    if (bmi>23.9&&bmi<27.9){
+
+                        text_result.setText("BMI为"+String.valueOf(f)+"体型"+"偏胖");
+
+                    }
+                    if (bmi>=27.9&&bmi<=40){
+
+                        text_result.setText("BMI为"+String.valueOf(f)+"体型"+"肥胖");
+                    }
+                    if (bmi>40){
+
+                        text_result.setText("BMI为"+String.valueOf(f)+"体型"+"重度肥胖");
+                    }
+
+//                    text_result.setText("BMI="+tz/(sg*sg*10000)+"");
                 }else{
                     text_result.setText(getResources().getString(R.string.textstr));
                 }
             }
-
         });
     }
 
